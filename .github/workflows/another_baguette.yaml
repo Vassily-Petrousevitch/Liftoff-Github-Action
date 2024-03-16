@@ -6,5 +6,5 @@ jobs:
     gatekeep:
         runs-on: ubuntu-latest
         steps:
-          - name: "Get actor"
-            run: echo "This is the guy ${{ github.actor }}"
+          - name: Use actor
+            run: echo "https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
