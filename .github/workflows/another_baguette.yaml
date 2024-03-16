@@ -18,10 +18,10 @@ jobs:
               method: 'GET'
 
           - name: Do stuff if so many stars
-            if: "${{ fromJson(steps.http.outputs.response).stars }} > 10"
+            if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 10)"
             run: |
               echo "You have so many stars"
 
           - name: Do stuff if few stars
-            if: "${{ fromJson(steps.http.outputs.response).stars }} > 0"
+            if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 0)"
             run: echo "You have at least one star"
