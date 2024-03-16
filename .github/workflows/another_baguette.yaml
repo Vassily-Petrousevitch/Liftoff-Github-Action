@@ -1,0 +1,10 @@
+name: The Gatekeeper
+
+on: [push]
+
+jobs:
+    gatekeep:
+        runs-on: ubuntu-latest
+        steps:
+          - name: "Get actor"
+            run: echo "This is the guy ${{ github.actor }}"
