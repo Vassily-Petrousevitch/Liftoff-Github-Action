@@ -7,4 +7,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Use actor
-            run: echo "https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
+            run: | 
+              echo "Getting stars from https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
+
+          - name: HTTP request
+            id: http
+            uses: fjogeleit/http-request-action@v1
+            with:
+              url: "https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
+              method: 'GET'
+
+          - name: See output
+            run: |
+              echo ${{ steps.http.outputs.response }}
