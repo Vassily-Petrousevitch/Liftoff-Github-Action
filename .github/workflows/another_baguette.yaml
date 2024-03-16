@@ -17,6 +17,11 @@ jobs:
               url: "https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
               method: 'GET'
 
-          - name: See output
+          - name: Do stuff if so many stars
+            if: "${{ fromJson(steps.http.outputs.response).stars }} > 10"
             run: |
-              echo ${{ steps.http.outputs.response }}
+              echo "You have so many stars"
+
+          - name: Do stuff if few stars
+            if: "${{ fromJson(steps.http.outputs.response).stars }} > 0"
+            run: echo "You have at least one star"
