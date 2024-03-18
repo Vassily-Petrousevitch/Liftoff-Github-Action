@@ -17,11 +17,14 @@ jobs:
               url: "https://api.github-star-counter.workers.dev/user/${{ github.actor }}"
               method: 'GET'
 
-          - name: Do stuff if so many stars
-            if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 10)"
-            run: |
-              echo "You have so many stars"
+          - name: If statements suck
+            run: ${{ if gt(10, 9) }}: echo 'true'
 
-          - name: Do stuff if few stars
-            if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 0)"
-            run: echo "You have at least one star"
+          # - name: Do stuff if so many stars
+          #   if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 10)"
+          #   run: |
+          #     echo "You have so many stars"
+
+          # - name: Do stuff if few stars
+          #   if: "gt(${{ fromJson(steps.http.outputs.response).stars }}, 0)"
+          #   run: echo "You have at least one star"
